@@ -33,6 +33,9 @@ export interface AppState {
   /** ペンサイズ */
   penSize: number;
 
+  /** 消しゴムサイズ */
+  eraserSize: number;
+
   /** 現在のモード ('pen' | 'eraser') */
   mode: 'pen' | 'eraser';
 
