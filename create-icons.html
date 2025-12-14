@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>アイコン生成ツール</title>
+</head>
+<body>
+  <h1>PWA アイコン生成</h1>
+  <p>以下のボタンをクリックしてアイコンをダウンロードしてください</p>
+  <button onclick="generateIcon(192)">192x192 アイコン生成</button>
+  <button onclick="generateIcon(512)">512x512 アイコン生成</button>
+
+  <script>
+    /**
+     * 簡易的なアイコンを生成してダウンロード
+     */
+    function generateIcon(size) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      // 背景色
+      ctx.fillStyle = '#2196F3';
+      ctx.fillRect(0, 0, size, size);
+
+      // テキスト「模」を中央に配置
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = `bold ${size * 0.5}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('模', size / 2, size / 2);
+
+      // ダウンロード
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `icon-${size}.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+  </script>
+</body>
+</html>
