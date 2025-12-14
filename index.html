@@ -1,13 +1,60 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/icon-192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mosha-app</title>
+    <meta name="theme-color" content="#2196F3" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>模写アプリ</title>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- メインコンテナ -->
+    <div id="app">
+      <!-- Canvas エリア -->
+      <div id="canvas-container">
+        <!-- 参照面 -->
+        <div class="canvas-wrapper">
+          <canvas id="reference-canvas"></canvas>
+          <canvas id="reference-grid" class="grid-overlay"></canvas>
+        </div>
+        <!-- 描画面 -->
+        <div class="canvas-wrapper">
+          <canvas id="drawing-canvas"></canvas>
+          <canvas id="drawing-grid" class="grid-overlay"></canvas>
+        </div>
+      </div>
+
+      <!-- ツールバー（下部） -->
+      <div id="toolbar">
+        <!-- 画像読み込み -->
+        <input type="file" id="image-input" accept="image/jpeg,image/jpg,image/png" style="display:none" />
+        <button id="load-image-btn">画像読込</button>
+
+        <!-- ペン / 消しゴム切替 -->
+        <button id="pen-btn" class="active">ペン</button>
+        <button id="eraser-btn">消しゴム</button>
+
+        <!-- ペンサイズ -->
+        <label>
+          サイズ: <input type="range" id="pen-size" min="1" max="50" value="2" />
+          <span id="pen-size-value">2</span>
+        </label>
+
+        <!-- グリッドセルサイズ -->
+        <label>
+          グリッド: <input type="range" id="grid-size" min="20" max="300" value="100" step="10" />
+          <span id="grid-size-value">100</span>px
+        </label>
+
+        <!-- 分割 / 重ね表示切替 -->
+        <button id="layout-toggle">重ね表示</button>
+
+        <!-- Undo -->
+        <button id="undo-btn">Undo</button>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
