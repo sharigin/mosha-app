@@ -20,6 +20,8 @@ function getUIElements() {
     eraserBtn: document.getElementById('eraser-btn') as HTMLButtonElement,
     penSizeInput: document.getElementById('pen-size') as HTMLInputElement,
     penSizeValue: document.getElementById('pen-size-value') as HTMLSpanElement,
+    eraserSizeInput: document.getElementById('eraser-size') as HTMLInputElement,
+    eraserSizeValue: document.getElementById('eraser-size-value') as HTMLSpanElement,
     gridSizeInput: document.getElementById('grid-size') as HTMLInputElement,
     gridSizeValue: document.getElementById('grid-size-value') as HTMLSpanElement,
     layoutToggleBtn: document.getElementById('layout-toggle') as HTMLButtonElement,
@@ -88,7 +90,7 @@ export function setupUI(state: AppState): void {
   ui.eraserBtn.addEventListener('click', () => {
     if (!state.drawingCanvas) return;
 
-    switchToEraserMode(state.drawingCanvas, state.penSize);
+    switchToEraserMode(state.drawingCanvas, state.eraserSize);
     state.mode = 'eraser';
 
     ui.eraserBtn.classList.add('active');
@@ -101,7 +103,18 @@ export function setupUI(state: AppState): void {
     state.penSize = size;
     ui.penSizeValue.textContent = size.toString();
 
-    if (state.drawingCanvas) {
+    if (state.drawingCanvas && state.mode === 'pen') {
+      updatePenSize(state.drawingCanvas, size);
+    }
+  });
+
+  // 消しゴムサイズ変更
+  ui.eraserSizeInput.addEventListener('input', (e) => {
+    const size = parseInt((e.target as HTMLInputElement).value, 10);
+    state.eraserSize = size;
+    ui.eraserSizeValue.textContent = size.toString();
+
+    if (state.drawingCanvas && state.mode === 'eraser') {
       updatePenSize(state.drawingCanvas, size);
     }
   });

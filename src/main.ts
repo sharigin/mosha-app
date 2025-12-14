@@ -26,6 +26,7 @@ function initApp(): void {
     canvasSize: null,
     gridCellSize: 100, // デフォルト値 (px)
     penSize: 2, // デフォルト値
+    eraserSize: 5, // デフォルト値
     mode: 'pen',
     layout: 'split',
     history: [],

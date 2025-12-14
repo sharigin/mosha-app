@@ -30,7 +30,7 @@ export function switchToPenMode(canvas: FabricCanvas, penSize: number): void {
 /**
  * 消しゴムモードに切り替える
  * @param canvas - 描画用Canvas
- * @param eraserSize - 消しゴムサイズ（ペンサイズと同じ値を使用）
+ * @param eraserSize - 消しゴムサイズ
  */
 export function switchToEraserMode(canvas: FabricCanvas, eraserSize: number): void {
   isEraserMode = true;
