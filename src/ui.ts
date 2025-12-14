@@ -25,6 +25,7 @@ function getUIElements() {
     gridSizeInput: document.getElementById('grid-size') as HTMLInputElement,
     gridSizeValue: document.getElementById('grid-size-value') as HTMLSpanElement,
     layoutToggleBtn: document.getElementById('layout-toggle') as HTMLButtonElement,
+    leftHandedToggleBtn: document.getElementById('left-handed-toggle') as HTMLButtonElement,
     undoBtn: document.getElementById('undo-btn') as HTMLButtonElement,
     canvasContainer: document.getElementById('canvas-container') as HTMLDivElement,
   };
@@ -141,6 +142,19 @@ export function setupUI(state: AppState): void {
       state.layout = 'split';
       ui.canvasContainer.classList.remove('overlay');
       ui.layoutToggleBtn.textContent = '重ね表示';
+    }
+  });
+
+  // 左利きモード切替
+  ui.leftHandedToggleBtn.addEventListener('click', () => {
+    state.leftHandedMode = !state.leftHandedMode;
+
+    if (state.leftHandedMode) {
+      ui.canvasContainer.classList.add('left-handed');
+      ui.leftHandedToggleBtn.classList.add('active');
+    } else {
+      ui.canvasContainer.classList.remove('left-handed');
+      ui.leftHandedToggleBtn.classList.remove('active');
     }
   });
 

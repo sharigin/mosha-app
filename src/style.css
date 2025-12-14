@@ -49,6 +49,11 @@ canvas {
   z-index: 10; /* Fabricキャンバスの上に表示 */
 }
 
+/* 左利きモード（参照エリアと描画エリアを左右反転） */
+#canvas-container.left-handed {
+  flex-direction: row-reverse;
+}
+
 /* 重ね表示モード */
 #canvas-container.overlay {
   position: relative;
