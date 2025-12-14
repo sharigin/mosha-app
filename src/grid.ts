@@ -59,6 +59,17 @@ export function drawGrid(gridCanvas: HTMLCanvasElement, cellSize: number): void 
   }
 
   ctx.stroke();
+
+  // 中心マーカー（小さな◆）を描画
+  const markerSize = 4;
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.moveTo(centerX, centerY - markerSize); // 上
+  ctx.lineTo(centerX + markerSize, centerY); // 右
+  ctx.lineTo(centerX, centerY + markerSize); // 下
+  ctx.lineTo(centerX - markerSize, centerY); // 左
+  ctx.closePath();
+  ctx.fill();
 }
 
 /**
