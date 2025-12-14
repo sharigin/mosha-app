@@ -15,7 +15,8 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* フォールバック */
+  height: 100dvh; /* 動的ビューポート（iOS Safari対応） */
   width: 100vw;
 }
 
@@ -27,7 +28,8 @@ body {
   align-items: center;
   gap: 10px;
   padding: 10px;
-  overflow: hidden;
+  overflow: auto; /* はみ出た場合はスクロール可能に */
+  min-height: 0; /* flexアイテムの縮小を許可 */
 }
 
 .canvas-wrapper {
