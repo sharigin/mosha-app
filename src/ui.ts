@@ -21,6 +21,7 @@ function getUIElements() {
     penSizeInput: document.getElementById('pen-size') as HTMLInputElement,
     penSizeValue: document.getElementById('pen-size-value') as HTMLSpanElement,
     gridSizeInput: document.getElementById('grid-size') as HTMLInputElement,
+    gridSizeValue: document.getElementById('grid-size-value') as HTMLSpanElement,
     layoutToggleBtn: document.getElementById('layout-toggle') as HTMLButtonElement,
     undoBtn: document.getElementById('undo-btn') as HTMLButtonElement,
     canvasContainer: document.getElementById('canvas-container') as HTMLDivElement,
@@ -56,7 +57,7 @@ export function setupUI(state: AppState): void {
         state.drawingCanvas,
         state.referenceGrid,
         state.drawingGrid,
-        state.gridDivisions
+        state.gridCellSize
       );
 
       state.loadedImage = image;
@@ -105,16 +106,15 @@ export function setupUI(state: AppState): void {
     }
   });
 
-  // グリッド分割数変更
-  ui.gridSizeInput.addEventListener('change', (e) => {
-    const divisions = parseInt((e.target as HTMLInputElement).value, 10);
-    if (divisions < 3 || divisions > 10) return;
-
-    state.gridDivisions = divisions;
+  // グリッドセルサイズ変更
+  ui.gridSizeInput.addEventListener('input', (e) => {
+    const cellSize = parseInt((e.target as HTMLInputElement).value, 10);
+    state.gridCellSize = cellSize;
+    ui.gridSizeValue.textContent = cellSize.toString();
 
     // グリッドCanvasを更新
     if (state.referenceGrid && state.drawingGrid) {
-      updateGrid(state.referenceGrid, state.drawingGrid, divisions);
+      updateGrid(state.referenceGrid, state.drawingGrid, cellSize);
     }
   });
 

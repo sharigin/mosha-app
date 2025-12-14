@@ -27,8 +27,8 @@ export interface AppState {
   /** 現在のCanvasサイズ (width, height) */
   canvasSize: { width: number; height: number } | null;
 
-  /** グリッド分割数 */
-  gridDivisions: number;
+  /** グリッドセルサイズ (px) */
+  gridCellSize: number;
 
   /** ペンサイズ */
   penSize: number;

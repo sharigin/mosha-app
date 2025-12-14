@@ -100,7 +100,7 @@ export async function displayImageOnCanvas(
  * @param drawingCanvas - 描画用Canvas
  * @param referenceGrid - 参照用グリッドCanvas
  * @param drawingGrid - 描画用グリッドCanvas
- * @param gridDivisions - グリッド分割数
+ * @param gridCellSize - グリッドセルサイズ (px)
  * @returns 読み込んだ画像とCanvasサイズ
  */
 export async function loadAndSetupImage(
@@ -109,7 +109,7 @@ export async function loadAndSetupImage(
   drawingCanvas: FabricCanvas,
   referenceGrid: HTMLCanvasElement,
   drawingGrid: HTMLCanvasElement,
-  gridDivisions: number
+  gridCellSize: number
 ): Promise<{ image: HTMLImageElement; size: { width: number; height: number } }> {
   // 画像を読み込む
   const img = await loadImageFile(file);
@@ -132,8 +132,8 @@ export async function loadAndSetupImage(
   drawingCanvas.clear();
 
   // グリッドを描画
-  drawGrid(referenceGrid, gridDivisions);
-  drawGrid(drawingGrid, gridDivisions);
+  drawGrid(referenceGrid, gridCellSize);
+  drawGrid(drawingGrid, gridCellSize);
 
   // Canvasとグリッドを表示
   showCanvas(referenceCanvas);

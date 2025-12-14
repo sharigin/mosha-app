@@ -24,7 +24,7 @@ function initApp(): void {
     drawingGrid: null,
     loadedImage: null,
     canvasSize: null,
-    gridDivisions: 4, // デフォルト値
+    gridCellSize: 100, // デフォルト値 (px)
     penSize: 2, // デフォルト値
     mode: 'pen',
     layout: 'split',
