@@ -42,6 +42,9 @@ export interface AppState {
   /** 表示レイアウト ('split' | 'overlay') */
   layout: 'split' | 'overlay';
 
+  /** 左利きモード (true: 参照エリアを右側に配置) */
+  leftHandedMode: boolean;
+
   /** Undo用の履歴 (JSON形式のCanvas状態) */
   history: string[];
 }

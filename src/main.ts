@@ -29,6 +29,7 @@ function initApp(): void {
     eraserSize: 5, // デフォルト値
     mode: 'pen',
     layout: 'split',
+    leftHandedMode: false,
     history: [],
   };
 
