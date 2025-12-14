@@ -7,8 +7,8 @@ import { Canvas as FabricCanvas, FabricImage } from 'fabric';
 import { resizeCanvas, showCanvas } from './canvas';
 import { drawGrid, resizeGridCanvas, showGrid } from './grid';
 
-// 最大Canvasサイズ (仕様: 800x800px)
-const MAX_CANVAS_SIZE = 800;
+// 最大Canvasサイズ (タブレット対応: 1200x1200px)
+const MAX_CANVAS_SIZE = 1200;
 
 /**
  * 画像ファイルを読み込む

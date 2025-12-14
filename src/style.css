@@ -74,8 +74,8 @@ canvas {
   background-color: transparent; /* 背景を透明に */
 }
 
-/* 重ね表示時に描画面（上に重なる方）に透明度を適用 */
-#canvas-container.overlay .canvas-wrapper:last-child canvas:not(.grid-overlay) {
+/* 重ね表示時に参照面（下に重なる方）に透明度を適用 */
+#canvas-container.overlay .canvas-wrapper:first-child canvas:not(.grid-overlay) {
   opacity: 0.5;
 }
 
