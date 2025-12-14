@@ -16,6 +16,7 @@ function getUIElements() {
   return {
     loadImageBtn: document.getElementById('load-image-btn') as HTMLButtonElement,
     imageInput: document.getElementById('image-input') as HTMLInputElement,
+    clearBtn: document.getElementById('clear-btn') as HTMLButtonElement,
     penBtn: document.getElementById('pen-btn') as HTMLButtonElement,
     eraserBtn: document.getElementById('eraser-btn') as HTMLButtonElement,
     penSizeInput: document.getElementById('pen-size') as HTMLInputElement,
@@ -41,6 +42,19 @@ export function setupUI(state: AppState): void {
   // 画像読み込みボタン
   ui.loadImageBtn.addEventListener('click', () => {
     ui.imageInput.click();
+  });
+
+  // クリアボタン
+  ui.clearBtn.addEventListener('click', () => {
+    if (!state.drawingCanvas) return;
+
+    // 描画キャンバスをクリア
+    state.drawingCanvas.clear();
+
+    // 履歴もクリア
+    state.history = [];
+
+    console.log('描画領域をクリアしました');
   });
 
   // 画像ファイル選択
